@@ -1,0 +1,14 @@
+# extensible-promisify
+
+#### Transform extensible objects APIs to conform with the Promises/A+ spec
+
+[![Build Status](https://travis-ci.org/tarruda/extensible-promisify.png)](https://travis-ci.org/tarruda/extensible-promisify)
+<br>
+[![browser support](https://ci.testling.com/tarruda/extensible-promisify.png)](https://ci.testling.com/tarruda/extensible-promisify)
+
+
+## Installation
+
+```sh
+npm install --save extensible-promisify
+```

@@ -1,0 +1,62 @@
+{
+  "name": "extensible-promisify",
+  "description": "Transform extensible objects APIs to conform with the Promises/A+ spec",
+  "version": "0.0.0",
+  "homepage": "https://github.com/tarruda/node-extensible-promisify",
+  "author": {
+    "name": "Thiago de Arruda",
+    "email": "tpadilha84@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tarruda/node-extensible-promisify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tarruda/node-extensible-promisify/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/tarruda/node-extensible-promisify/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "./index",
+  "dependencies": {
+    "bluebird": "~0.11.6-0"
+  },
+  "peerDependencies": {
+    "extensible": "~1.1.1"
+  },
+  "devDependencies": {
+    "extensible": "~1.1.1",
+    "mocha": "~1.16.2",
+    "nodemon": "1.0.7",
+    "testling": "~1.5.6",
+    "browserify": "~3.19.0",
+    "es5-shim": "~2.3.0",
+    "json3": "~3.2.6",
+    "setimmediate": "~1.0.1"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "testling": {
+    "browsers": [
+      "ie6",
+      "ie7",
+      "ie8",
+      "ie9",
+      "firefox/15",
+      "chrome/22",
+      "opera/12",
+      "safari/5.1"
+    ],
+    "harness": "mocha",
+    "scripts": [
+      "node_modules/json3/lib/json3.js",
+      "node_modules/es5-shim/es5-shim.js",
+      "node_modules/es5-shim/es5-sham.js"
+    ],
+    "files": "test/*.js"
+  }
+}
