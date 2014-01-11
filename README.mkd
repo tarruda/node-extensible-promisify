@@ -6,9 +6,32 @@
 <br>
 [![browser support](https://ci.testling.com/tarruda/extensible-promisify.png)](https://ci.testling.com/tarruda/extensible-promisify)
 
-
 ## Installation
 
 ```sh
 npm install --save extensible-promisify
+```
+
+## Usage
+
+A simple way to use is declare methods with the 'promisify' flag:
+
+```js
+var extensible = require('extensible');
+var extensiblePromisify = require('extensible-promisify');
+
+var obj = extensible();
+obj.addMethod('method1', 'arg1, arg2, cb', {promisify: true});
+obj.addMethod('method2', 'arg1, arg2');
+obj.use(extensiblePromisify);
+// method1 now has a promise/a+ API while method2 is unaffected
+```
+
+Another way is provide a predicate to select which methods need to be
+promisified:
+
+```js
+obj.use(extensiblePromisify, function(method) {
+  return method.args[method.args.length - 1] === 'cb';
+});
 ```
