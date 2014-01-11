@@ -1,7 +1,7 @@
 {
   "name": "extensible-promisify",
   "description": "Transform extensible objects APIs to conform with the Promises/A+ spec",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/tarruda/node-extensible-promisify",
   "author": {
     "name": "Thiago de Arruda",
