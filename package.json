@@ -25,10 +25,10 @@
     "bluebird": "~0.11.6-0"
   },
   "peerDependencies": {
-    "extensible": "~1.1.1"
+    "extensible": "~2.0.0"
   },
   "devDependencies": {
-    "extensible": "~1.1.1",
+    "extensible": "~2.0.0",
     "mocha": "~1.16.2",
     "nodemon": "1.0.7",
     "testling": "~1.5.6",

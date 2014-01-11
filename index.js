@@ -9,10 +9,8 @@ module.exports = function(predicate) {
   var rv = {};
 
   if (!predicate) predicate = hasPromisifyMarker;
-
-  for (var i = 0, l = this.methods.length; i < l; i++) {
-    var method = this.methods[i];
-    if (!predicate(method)) continue;
+  this.eachMethod(function(method) {
+    if (!predicate(method)) return;
     var fargs = method.args.slice();
     var nargs = method.args.slice();
     fargs.push('next'); // append the 'next' argument to the method
@@ -22,15 +20,15 @@ module.exports = function(predicate) {
     // construct a function that will wrap the call into a bluebird promise
     rv[method.name] =
       new Function(fargs.join(','),
-        '\n  var resolver = this.BluebirdPromise.defer();' +
+        '\n  var resolver = this._bluebirdPromise.defer();' +
         '\n  next(' + nargs.join(',') + c + 'function(err, rv) {' +
         '\n    if (err) return resolver.reject(err);' +
         '\n    resolver.resolve(rv);' +
         '\n  });' +
-        '\n  return resolver.promise;');
-  }
+        '\n  return resolver.promise;\n');
+  });
 
-  this.BluebirdPromise = Promise;
+  this._bluebirdPromise = Promise;
 
   return rv;
 };

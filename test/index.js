@@ -5,13 +5,13 @@ var promisify = require('../index');
 require('setimmediate');
 
 var obj = extensible();
-obj.method('m1', 'cb', {promisify: true});
-obj.method('m2', 'a1, cb', {promisify: true});
-obj.method('m3', 'a1, a2, cb', {promisify: true});
-obj.method('m4', 'a1, a2, a3, cb', {promisify: true});
-obj.method('m5', 'a1, a2, a3, cb');
-obj.method('m6', 'a1, a2, a3, cb', {promisify: true});
-obj.layer({
+obj.addMethod('m1', 'cb', {promisify: true});
+obj.addMethod('m2', 'a1, cb', {promisify: true});
+obj.addMethod('m3', 'a1, a2, cb', {promisify: true});
+obj.addMethod('m4', 'a1, a2, a3, cb', {promisify: true});
+obj.addMethod('m5', 'a1, a2, a3, cb');
+obj.addMethod('m6', 'a1, a2, a3, cb', {promisify: true});
+obj.use({
   m1: function(cb) {
     setImmediate(function() {
       cb(null, '0');
@@ -53,7 +53,7 @@ obj.layer({
     });
   },
 });
-obj.layer(promisify);
+obj.use(promisify);
 
 
 describe('promisify', function() {
